@@ -1,2 +1,5 @@
 *~
-test-output/*
+test-output/*.idea
+*.png
+**/__pycache__/
+.idea/
