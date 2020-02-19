@@ -210,8 +210,8 @@ def getSeasonalPattern(tType, tempTuple):
 def getClimateColor(pxTuple, tempProfile, precProfile, outProfile, isNorthernHemis):
     # pxTuple contains a tuple of four pixels, for (temp1, temp2, precip1, precip2).
     # If this pixel in any input has the ocean color we treat this pixel as ocean and ignore it.
-    if (tempProfile.isIgnored(pxTuple[0]) or pxTuple[1] == tempProfile.isIgnored(pxTuple[1]) or
-        pxTuple[2] == precProfile.isIgnored(pxTuple[2]) or precProfile.isIgnored(pxTuple[3])):
+    if (tempProfile.isIgnored(pxTuple[0]) or tempProfile.isIgnored(pxTuple[1]) or
+        precProfile.isIgnored(pxTuple[2]) or precProfile.isIgnored(pxTuple[3])):
         return outProfile.ignoredColor
     else:
         tempTuple, precTuple = convertPixelData(pxTuple, tempProfile, precProfile, isNorthernHemis)
@@ -358,8 +358,8 @@ def lookupLifeZoneColor(bioTemp, precTotal, outProfile):
 # Given an input pixel from each input map, returns an output color value
 # corresponding to its Holdridge life zone category according to the output profile's color mapping.
 def getLifeZoneColor(pxTuple, tempProfile, precProfile, outProfile):
-    if (tempProfile.isIgnored(pxTuple[0]) or pxTuple[1] == tempProfile.isIgnored(pxTuple[1]) or
-        pxTuple[2] == precProfile.isIgnored(pxTuple[2]) or precProfile.isIgnored(pxTuple[3])):
+    if (tempProfile.isIgnored(pxTuple[0]) or tempProfile.isIgnored(pxTuple[1]) or
+        precProfile.isIgnored(pxTuple[2]) or precProfile.isIgnored(pxTuple[3])):
         return outProfile.ignoredColor
     else:
         tempTuple = (getTemperatureCategory(pxTuple[0], tempProfile), getTemperatureCategory(pxTuple[1], tempProfile))
